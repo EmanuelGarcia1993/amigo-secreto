@@ -4,7 +4,17 @@ let listaDeAmigos = [];
 
 //Ingreso de nombres
 function agregarAmigo() {
+    /*                              QUEDA POR MODIFICAR
+    if(contador != 0) {
 
+        asignarTextoElemento('#listaAmigos', '');
+
+    }
+    */
+
+    //Variable donde se usan los bucles y se inicializa en 0
+    let contador = 0;
+    
     //toma el valor ingresado en el input con id:'amigos' y lo guarda en 'nombre'
     let nombre = document.getElementById('amigo').value;
 
@@ -17,10 +27,31 @@ function agregarAmigo() {
     } else {
         //Se agrega el nombre ingresado en la lista
         listaDeAmigos.push(nombre);
+
+        console.log(listaDeAmigos);
+
+        //Se crea la variable para almacenar los nombres
+        let cadena = '';
+        while(contador < listaDeAmigos.length) {
+            //Se agregan los nombres a una variable para darle un salto de linea y no mostrar un solo nombre
+            cadena += `${listaDeAmigos[contador]}<br>`
+            asignarTextoElemento('#listaAmigos', cadena);
+            contador++;
+        }
         limpiarCaja();
     }  
 
     console.log(listaDeAmigos);
+}
+
+function sortearAmigo() {
+
+    //Se crea una variable y se guarda un numero aleatorio del rango de la lista
+    let sorteo = Math.floor(Math.random()*listaDeAmigos.length);
+
+    //Se muestra al ganador
+    asignarTextoElemento('#resultado', `El ganador es ${listaDeAmigos[sorteo]}`);
+
 }
 
 //Esta funcion asigna un texto al elemento que se quiera modificar
