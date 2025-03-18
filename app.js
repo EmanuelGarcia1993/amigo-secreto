@@ -2,21 +2,25 @@
 // Lista en donde se va a guardar los nombres
 let listaDeAmigos = [];
 
+//Variable en donde se confirma si se hizo el sorteo
+let sorteoRealizado = false;
+
 //Ingreso de nombres
 function agregarAmigo() {
-    /*                              QUEDA POR MODIFICAR
-    if(contador != 0) {
-
-        asignarTextoElemento('#listaAmigos', '');
-
-    }
-    */
 
     //Variable donde se usan los bucles y se inicializa en 0
     let contador = 0;
     
     //toma el valor ingresado en el input con id:'amigos' y lo guarda en 'nombre'
     let nombre = document.getElementById('amigo').value;
+
+    if (sorteoRealizado) {
+
+        //Deja la lista de amigos en blanco
+        listaDeAmigos = [];
+        sorteoRealizado = false;
+
+    }   
 
     //comprueba que no sea un espacio en blanco y no contenga numeros
     //'/\d/'= regex; busca un numero / '.test' comprueba en la variable lo solicitado
@@ -52,6 +56,9 @@ function sortearAmigo() {
     //Se muestra al ganador
     asignarTextoElemento('#resultado', `El ganador es ${listaDeAmigos[sorteo]}`);
 
+    //Se cambia la variable por true
+    sorteoRealizado = true;
+
 }
 
 //Esta funcion asigna un texto al elemento que se quiera modificar
@@ -69,3 +76,4 @@ function limpiarCaja() {
     document.querySelector('#amigo').value = '';
 
 }
+
